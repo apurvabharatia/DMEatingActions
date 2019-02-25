@@ -1,0 +1,163 @@
+
+fileNames_EMG=["1503510449718_EMG.csv","1503512024740_EMG.csv","1503513662628_EMG.csv"	,"1503515171349_EMG.csv"	,"1503523593605_EMG.csv"	,"1503525230880_EMG.txt","1503600471339_EMG.txt"	,"1503601791851_EMG.txt"	,"1503604387983_EMG.txt"	,"1503610324174_EMG.txt"	,"1503612761276_EMG.txt"	,"1503614529248_EMG.txt"	,"1503616371604_EMG.txt","1503618071641_EMG.txt"	,"1503683563307_EMG.txt"	,"1503685368577_EMG.txt","1503686805336_EMG.txt"	,"1503688257359_EMG.txt","1503695352765_EMG.txt"	,"1503697313323_EMG.txt"	,"1503698678322_EMG.txt"	,"1503701484723_EMG.txt"	,"1503702810845_EMG.txt","1503704008775_EMG.txt"	,"1503944237832_EMG.txt","1503945980566_EMG.txt"	,"1503948467876_EMG.txt"	,"1503955687111_EMG.txt","1503957322493_EMG.txt","1503959170110_EMG.txt"	
+
+];
+
+fileNames_IMU=["1503510449718_IMU.csv","1503512024740_IMU.csv","1503513662628_IMU.csv"	,"1503515171349_IMU.csv"	,"1503523593605_IMU.csv"	,"1503525230880_IMU.txt","1503600471339_IMU.txt"	,"1503601791851_IMU.txt"	,"1503604387983_IMU.txt"	,"1503610324174_IMU.txt"	,"1503612761276_IMU.txt"	,"1503614529248_IMU.txt"	,"1503616371604_IMU.txt","1503618071641_IMU.txt"	,"1503683563307_IMU.txt"	,"1503685368577_IMU.txt","1503686805336_IMU.txt"	,"1503688257359_IMU.txt"	,"1503695352765_IMU.txt"	,"1503697313323_IMU.txt"	,"1503698678322_IMU.txt"	,"1503701484723_IMU.txt"	,"1503702810845_IMU.txt","1503704008775_IMU.txt"	,"1503944237832_IMU.txt","1503945980566_IMU.txt"	,"1503948467876_IMU.txt"	,"1503955687111_IMU.txt","1503957322493_IMU.txt","1503959170110_IMU.txt"	
+
+];
+
+fileNames_gT=["1503510449718.csv","1503512024740.csv","1503513662628.csv"	,"1503515171349.csv"	,"1503523593605.csv"	,"1503525230880.txt","1503600471339.txt"	,"1503601791851.txt"	,"1503604387983.txt"	,"1503610324174.txt"	,"1503612761276.txt"	,"1503614529248.txt"	,"1503616371604.txt","1503618071641.txt"	,"1503683563307.txt"	,"1503685368577.txt","1503686805336.txt"	,"1503688257359.txt"	,"1503695352765.txt"	,"1503697313323.txt"	,"1503698678322.txt"	,"1503701484723.txt"	,"1503702810845.txt","1503704008775.txt"	,"1503944237832.txt","1503945980566.txt"	,"1503948467876.txt"	,"1503955687111.txt","1503957322493.txt","1503959170110.txt"	
+
+];
+
+graphNames=[];
+
+resFileNames_eating=["eatingVals_1503510449718.csv","eatingVals_1503512024740.csv","eatingVals_1503513662628.csv"	,"eatingVals_1503515171349.csv"	,"eatingVals_1503523593605.csv"];
+resFileNames_noneating=["noneatingVals_1503510449718.csv","noneatingVals_1503512024740.csv","noneatingVals_1503513662628.csv"	,"noneatingVals_1503515171349.csv"	,"noneatingVals_1503523593605.csv"];
+
+
+
+it=1;
+
+%datIMU= csvread('1503512024740_IMU.csv');
+disp(fileNames_IMU(it));
+datIMU=csvread(fileNames_IMU(it));
+[r,c]=size(datIMU);
+
+datIMU_1=datIMU(:,1);
+datIMU_2=datIMU(:,2);
+datIMU_3=datIMU(:,3);
+datIMU_4=datIMU(:,4);
+datIMU_5=datIMU(:,5);
+datIMU_6=datIMU(:,6);
+datIMU_7=datIMU(:,7);
+datIMU_8=datIMU(:,8);
+datIMU_9=datIMU(:,9);
+datIMU_10=datIMU(:,10);
+datIMU_11=datIMU(:,11);
+[rtemp,ctemp]=size(datIMU_11);
+paddingVal=rtemp;
+temp_extraIMU=zeros(paddingVal,1);
+
+datIMU_new=horzcat(datIMU,temp_extraIMU,temp_extraIMU,temp_extraIMU,temp_extraIMU,temp_extraIMU,temp_extraIMU,temp_extraIMU,temp_extraIMU);
+
+%datEMG=csvread('1503512024740_EMG.csv');
+datEMG=csvread(fileNames_EMG(it));
+[r1,c1]=size(datEMG);
+
+datEMG_1=datEMG(:,1);
+datEMG_2=datEMG(:,2);
+datEMG_3=datEMG(:,3);
+datEMG_4=datEMG(:,4);
+datEMG_5=datEMG(:,5);
+datEMG_6=datEMG(:,6);
+datEMG_7=datEMG(:,7);
+datEMG_8=datEMG(:,8);
+datEMG_9=datEMG(:,9);
+
+[rtempEMG,ctempEMG]=size(datEMG_9);
+paddingValEmg=rtempEMG;
+temp_extra1EMG=zeros(rtempEMG,1);
+
+datEMG_new=horzcat(datEMG_1, temp_extra1EMG,temp_extra1EMG,temp_extra1EMG,temp_extra1EMG,temp_extra1EMG,temp_extra1EMG,temp_extra1EMG,temp_extra1EMG,temp_extra1EMG,temp_extra1EMG,datEMG_2,datEMG_3,datEMG_4,datEMG_5,datEMG_6,datEMG_7,datEMG_8,datEMG_9);
+
+dat_IMU_EMG_new=vertcat(datIMU_new, datEMG_new);
+
+dat_IMU_EMG_sorted=sortrows(dat_IMU_EMG_new);
+
+[rdat_IMU_EMG_sorted, cdat_IMU_EMG_sorted]=size(dat_IMU_EMG_sorted);
+
+%datGT=csvread('1503512024740.csv');
+datGT=csvread(fileNames_gT(it));
+[rGT, cGT]=size(datGT);
+fulleating=[];
+for i= 1:rGT
+    
+    fr=datGT(i,1);
+    to=datGT(i,2);
+    eating=fr:1:to;
+    eating=transpose(eating);
+    fulleating=vertcat(fulleating,eating);
+    
+end
+[rfullEating, cfullEating]=size(fulleating);
+
+for i = 1:rfullEating
+    fulleating(i)=floor(fulleating(i)*1.667);
+end
+
+annotations=[];
+
+eatingMat=[];
+noneatingMat=[];
+
+for i= 1:rdat_IMU_EMG_sorted
+   
+    if ismember(i,fulleating)
+        eatingMat=vertcat(eatingMat,dat_IMU_EMG_sorted(i,:));
+        annotations(i)=1;
+    else
+        noneatingMat=vertcat(noneatingMat,dat_IMU_EMG_sorted(i,:));
+        annotations(i)=0;
+    end
+end
+annotations=transpose(annotations);
+dat_IMU_EMG_sorted=horzcat(dat_IMU_EMG_sorted,annotations);
+
+%dat_IMU_EMG_new = dat_IMU_EMG_sorted(2:19);
+
+Col2 = dat_IMU_EMG_sorted(:,2);
+Col3 = dat_IMU_EMG_sorted(:,3);
+Col4 = dat_IMU_EMG_sorted(:,4);
+Col5 = dat_IMU_EMG_sorted(:,5);
+Col6 = dat_IMU_EMG_sorted(:,6);
+Col7 = dat_IMU_EMG_sorted(:,7);
+Col8 = dat_IMU_EMG_sorted(:,8);
+Col9 = dat_IMU_EMG_sorted(:,9);
+Col10 = dat_IMU_EMG_sorted(:,10);
+Col11 = dat_IMU_EMG_sorted(:,11);
+Col12 = dat_IMU_EMG_sorted(:,12);
+Col13 = dat_IMU_EMG_sorted(:,13);
+Col14 = dat_IMU_EMG_sorted(:,14);
+Col15 = dat_IMU_EMG_sorted(:,15);
+Col16 = dat_IMU_EMG_sorted(:,16);
+Col17 = dat_IMU_EMG_sorted(:,17);
+Col18 = dat_IMU_EMG_sorted(:,18);
+Col19 = dat_IMU_EMG_sorted(:,19);
+
+dat_IMU_EMG_new = horzcat(Col2,Col3,Col4,Col5,Col6,Col7,Col8,Col9,Col10,Col11,Col12,Col13,Col14,Col15,Col16,Col17,Col18,Col19);
+
+[ coeffNE, scoreNE, latentNE ] = pca( ( dat_IMU_EMG_new ) );
+disp( coeffNE );
+disp( scoreNE );
+disp( latentNE );
+
+pcaOutput = horzcat( coeffNE(:,1), coeffNE(:,2), coeffNE(:,3), coeffNE(:,4), coeffNE(:,5), coeffNE(:,6),coeffNE(:,7) );
+
+reducedData = mtimes(dat_IMU_EMG_new, pcaOutput);
+
+dat_IMU_EMG_new = horzcat( dat_IMU_EMG_new, annotations );
+shuffled_dat_IMU_EMG_new = dat_IMU_EMG_new(randperm(size(dat_IMU_EMG_new,1)),:);
+
+[rows, columns] = size(shuffled_dat_IMU_EMG_new);
+
+splitSize = floor(rows * 0.6);
+
+trainingData = shuffled_dat_IMU_EMG_new(1:splitSize,:);
+testingData = shuffled_dat_IMU_EMG_new(splitSize+1:rows,:);
+
+trainingData_new = horzcat(trainingData(:,1),trainingData(:,2), trainingData(:,3), trainingData(:,4), trainingData(:,5), trainingData(:,6), trainingData(:,7), trainingData(:,8), trainingData(:,9), trainingData(:,10), trainingData(:,11), trainingData(:,12), trainingData(:,13), trainingData(:,14), trainingData(:,15), trainingData(:,16), trainingData(:,17), trainingData(:,18) );
+trainingLabels = trainingData(:,19);
+
+testingData_new = horzcat(testingData(:,1),testingData(:,2),testingData(:,3),testingData(:,4),testingData(:,5),testingData(:,6),testingData(:,7),testingData(:,8),testingData(:,9),testingData(:,10),testingData(:,11),testingData(:,12),testingData(:,13),testingData(:,14),testingData(:,15),testingData(:,16),testingData(:,17),testingData(:,18));
+testingLabels = testingData(:, 19);
+
+dtree = fitctree(trainingData_new, trainingLabels);
+dtreePredicition = predict(dtree, testingData_new);
+
+confusionMatrix = confusionmat(testingLabels, dtreePredicition);
+
+disp(confusionMatrix);
+confusionchart(confusionMatrix);
+
